@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   md5_whirlpool_final.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anesteru <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/25 19:26:37 by anesteru          #+#    #+#             */
-/*   Updated: 2018/08/25 19:26:38 by anesteru         ###   ########.fr       */
+/*                                                                            */
+/*   md5_whirlpool_final.c                                                    */
+/*                                                                            */
+/*   By: anesteru <cyanopsitta@duck.com>                                      */
+/*                                                                            */
+/*   Created: 2018/08 by anesteru  <marvin@42.fr>                             */
+/*   Updated: 2023/09/04 by chuhei (chuhei1987)                               */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,7 @@ void		u64_to_chars_reverse_endian(unsigned char *str, uint64_t n)
 	str[7] = (unsigned char)n;
 }
 
-void		md5_final(unsigned char *result, t_md5 *s)
-{
-	uint64_t used = s->low & 0x3f;
-	s->buffer[used++] = 0x80;
-	uint64_t available = 64 - used;
-	if (available < 8)
-	{
-		memset(&s->buffer[used], 0, available);
-		md5_transform(s, s->buffer, 64);
-		used = 0;
-		available = 64;
-	}
-	memset(&s->buffer[used], 0, available - 8);
-	u32_to_chars(&s->buffer[56], s->low * 8);
-	u32_to_chars(&s->buffer[60], s->high);
-	md5_transform(s, s->buffer, 64);
-	u32_to_chars(&result[0], s->a);
-	u32_to_chars(&result[4], s->b);
-	u32_to_chars(&result[8], s->c);
-	u32_to_chars(&result[12], s->d);
-}
+
 
 void		whirlpool_final(unsigned char *result, t_md5 *s)
 {

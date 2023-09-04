@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sha512.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anesteru <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/24 15:14:45 by anesteru          #+#    #+#             */
-/*   Updated: 2018/08/24 15:14:47 by anesteru         ###   ########.fr       */
+/*                                                                            */
+/*   sha512.c                                                                 */
+/*                                                                            */
+/*   Updated By: chuhei <cyanopsitta@duck.com>                                */
+/*                                                                            */
+/*   Created: 2018/08 by anesteru  <marvin@42.fr>                             */
+/*   Updated: 2023/09/04 by chuhei (chuhei1987)                               */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,42 +52,6 @@ char		*sha384(char *input, uint64_t size)
 	return (get_result_string(result, 48));
 }
 
-char		*sha512_256(char *input, uint64_t size)
-{
-	t_md5			s;
-	unsigned char	result[32];
 
-	s.a = 0x22312194FC2BF72C;
-	s.b = 0x9F555FA3C84C64C2;
-	s.c = 0x2393B86B6F53B151;
-	s.d = 0x963877195940EABD;
-	s.e = 0x96283EE2A88EFFE3;
-	s.f = 0xBE5E1E2553863992;
-	s.g = 0x2B0199FC2C85B8AA;
-	s.h = 0x0EB72DDC81C52CA2;
-	s.low = 0;
-	s.high = 0;
-	sha512_update(&s, input, size);
-	sha512_256_final(result, &s);
-	return (get_result_string(result, 32));
-}
 
-char		*sha512_224(char *input, uint64_t size)
-{
-	t_md5			s;
-	unsigned char	result[28];
 
-	s.a = 0x8C3D37C819544DA2;
-	s.b = 0x73E1996689DCD4D6;
-	s.c = 0x1DFAB7AE32FF9C82;
-	s.d = 0x679DD514582F9FCF;
-	s.e = 0x0F6D2B697BD44DA8;
-	s.f = 0x77E36F7304C48942;
-	s.g = 0x3F9D85A86A1D36C8;
-	s.h = 0x1112E6AD91D692A1;
-	s.low = 0;
-	s.high = 0;
-	sha512_update(&s, input, size);
-	sha512_224_final(result, &s);
-	return (get_result_string(result, 28));
-}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anesteru <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/26 17:58:08 by anesteru          #+#    #+#             */
-/*   Updated: 2018/08/26 17:58:09 by anesteru         ###   ########.fr       */
+/*                                                                            */
+/*   parse_args.c                                                    */
+/*                                                                            */
+/*   By: anesteru <cyanopsitta@duck.com>                                      */
+/*                                                                            */
+/*   Created: 2018/08 by anesteru  <marvin@42.fr>                             */
+/*   Updated: 2023/09/04 by chuhei (chuhei1987)                               */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static int		is_command(char *command, t_ssl *s)
 	{
 		printf("\nft_ssl:Error: '%s' is an invalid command.\n\n", command);
 		printf("Standard commands:\n\n");
-		printf("Message Digest commands:\n%-18s%-18s", "md5", "sha224");
-		printf("%-18s%-18s\n%-18s%-18s%-18s%-18s\n\n", "sha256", "sha384",
-			"sha512", "sha512/224", "sha512/256", "whirlpool");
-		printf("Cipher commands:\n\n");
+		//printf("Message Digest commands:\n%-18s%-18s", "md5", "sha224");
+		printf("%-18s%-18s%-18s%-18s\n\n", "sha256", "sha384",
+			"sha512", "whirlpool");
+		
 		return (1);
 	}
 	return (0);

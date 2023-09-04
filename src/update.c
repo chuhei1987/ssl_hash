@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   update.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anesteru <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/24 15:30:25 by anesteru          #+#    #+#             */
-/*   Updated: 2018/08/24 15:30:27 by anesteru         ###   ########.fr       */
+/*                                                                            */
+/*   update.c                                                                 */
+/*                                                                            */
+/*   Updated By: chuhei <cyanopsitta@duck.com>                                */
+/*                                                                            */
+/*   Created: 2018/08/08 15:31:58 by anesteru <marvin@42.fr>                  */
+/*   Updated: 2023/09/04 by chuhei (chuhei1987)                               */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl_hash.h"
 
-void			md5_update(t_md5 *s, const void *data, uint64_t size)
-{
-	s->low = size & 0x1fffffff;
-	s->high += size >> 29;
-	if (size >= 64)
-	{
-		data = md5_transform(s, data, size & ~(uint64_t)0x3f);
-		size &= 0x3f;
-	}
-	memcpy(s->buffer, data, size);
-}
+
 
 void			sha256_update(t_md5 *s, const void *data, uint64_t size)
 {

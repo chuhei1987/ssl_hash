@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                                            */
+/*   ssl_hash.h                                                               */
+/*                                                                            */
+/*   By: anesteru <cyanopsitta@duck.com>                                      */
+/*                                                                            */
+/*   Created: 2018/08 by anesteru  <marvin@42.fr>                             */
+/*   Updated: 2023/09/04 by chuhei (chuhei1987)                               */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SSL_HASH_H
 # define SSL_HASH_H
 
@@ -6,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
+#include <stdint.h>
 
 # define BUFF_SIZE	524288
 
@@ -48,18 +61,14 @@ char				*get_result_string(unsigned char *result, int size);
 void				u32_to_chars_reverse_endian(unsigned char *str, uint32_t n);
 void				u64_to_chars_reverse_endian(unsigned char *str, uint64_t n);
 
-char				*md5(char *input, uint64_t size);
-const void			*md5_transform(t_md5 *s, const void *data, uint64_t size);
-void				md5_update(t_md5 *s, const void *data, uint64_t size);
-void				md5_final(unsigned char *result, t_md5 *s);
+
 
 char				*sha256(char *input, uint64_t size);
 const void			*sha256_transform(t_md5 *s, const void *data,
 									uint64_t size);
 void				sha256_update(t_md5 *s, const void *data, uint64_t size);
 void				sha256_final(unsigned char *result, t_md5 *s);
-char				*sha224(char *input, uint64_t size);
-void				sha224_final(unsigned char *result, t_md5 *s);
+
 
 char				*sha512(char *input, uint64_t size);
 const void			*sha512_transform(t_md5 *s, const void *data,
@@ -70,8 +79,7 @@ char				*sha384(char *input, uint64_t size);
 void				sha384_final(unsigned char *result, t_md5 *s);
 char				*sha512_256(char *input, uint64_t size);
 void				sha512_256_final(unsigned char *result, t_md5 *s);
-char				*sha512_224(char *input, uint64_t size);
-void				sha512_224_final(unsigned char *result, t_md5 *s);
+
 
 char				*whirlpool(char *input, uint64_t size);
 const void			*whirlpool_transform(uint64_t *hash, const void *data,
